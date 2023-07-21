@@ -1,0 +1,17 @@
+<h1>Events online</h1>
+
+<div>
+  <% if user_signed_in? %>
+    <% @events.each do |event| %>
+        
+        <p><%= link_to event.name, @root %></p>
+        <p><%= link_to event.date, @root %></p>
+        <p><%= link_to event.location, @root %></p>
+        
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New Event", new_event_path %><br>
+
+<%= link_to 'Sign out', destroy_user_session_path, class: 'nav-link active', data: { turbo_method: :delete } %>
