@@ -1,0 +1,9 @@
+<h1><%= @event.name %></h1>
+<p><%= @event.date%></p>
+<p><%= @event.location%></p>
+
+<% if current_user.attended_events.include?(@event) %>
+  <%= button_to "Unattend", event_attendance_path(@event), method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <%= button_to "Attend", event_attendances_path(@event), method: :post, class: "btn btn-primary" %>
+<% end %>

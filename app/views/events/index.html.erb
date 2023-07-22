@@ -4,7 +4,7 @@
   <% if user_signed_in? %>
     <% @events.each do |event| %>
         
-        <p><%= link_to event.name, @root %></p>
+        <p><%= link_to event.name, @event %></p>
         <p><%= link_to event.date, @root %></p>
         <p><%= link_to event.location, @root %></p>
         
