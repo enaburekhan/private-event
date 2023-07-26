@@ -23,6 +23,23 @@ class EventsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end 
+
+  # def attend
+  #   @event = Event.find(params[:id])
+
+  #   if @event.attendees.include?(current_user)
+  #     redirect_to events_path, notice: "You are already on the list"  
+  #   else
+  #     @event.attendees << current_user
+  #     redirect_to events_path, notice: 'Ooops! Something went wrong...'
+  #   end
+  # end
+
+  # def unattend
+  #   @event = Event.find(params[:id])
+  #   @event.attendees(current_user).destroy
+  #   redirect_to event_path(@event), notice: 'You are no longer attending this event.'
+  # end
   
   private 
 

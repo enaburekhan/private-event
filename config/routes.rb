@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :users, only: [:show]
-  resources :events, only: [:new, :create, :index, :show] do
-   resources :attendances, only: [:create, :destroy], module: :events
+  resources :events do
+   resources :attendances, only: [:create, :destroy ]
   end
 end

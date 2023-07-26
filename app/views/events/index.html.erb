@@ -12,6 +12,24 @@
   <% end %>
 </div>
 
+<h1>Upcoming Events</h1>
+<% @events.upcoming.each do |event| %>
+  <div>
+    <h3><%= link_to event.name, event_path(event) %></h3>
+    <p>Date: <%= event.date %></p>
+    <p><%= event.location %></p>
+  </div>
+<% end %>
+
+<h1>Past Events</h1>
+<% @events.past.each do |event| %>
+  <div>
+    <h3><%= link_to event.name, event_path(event) %></h3>
+    <p>Date: <%= event.date %></p>
+    <p><%= event.location %></p>
+  </div>
+<% end %>
+
 <%= link_to "New Event", new_event_path %><br>
 
 <%= link_to 'Sign out', destroy_user_session_path, class: 'nav-link active', data: { turbo_method: :delete } %>

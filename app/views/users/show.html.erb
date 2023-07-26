@@ -11,3 +11,33 @@
   <p>No events created yet.</p> 
 <% end %>
 
+<h2>Attended Events:</h2>
+<% if  @attended_events.any? %>
+   <% past_events, future_events = @attended_events.partition { |event| event.date < Date.current } %>
+
+   <% if past_events.any? %>
+     <h3>Past Events:</h3>
+     <ul>
+       <% past_events.each do |event| %>
+         <li><%= event.name %> - <%= event.date %></li>
+       <% end %>
+     </ul>
+  <% else %>
+    <p>No past events attended.</p>
+  <% end %>
+  
+  <% if future_events.any? %>
+    <h3>Future Events:<h3>
+    <ul>
+      <% future_events.each do |event| %>
+        <li><%= event.name %> - <%= event.date %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No future events attended.</p>
+  <% end %>
+<% else %>
+  <p>No events attended yet.</p>
+<% end %>
+
+
