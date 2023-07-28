@@ -23,6 +23,30 @@ class EventsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end 
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to event_path(@event), notice: 'Event successfully updated'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+
+    # Delete all associated attendances
+    # @event.attendances.destroy_all
+    @event.destroy
+
+    redirect_to events_path, notice: 'Event successfully deleted'
+  end
   
   private 
 

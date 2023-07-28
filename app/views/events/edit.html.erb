@@ -1,0 +1,29 @@
+<h1>Edit Event</h1>
+
+<%= form_with(model: @event, url: event_path(@event), method: :patch) do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @event.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :date %><br>
+    <%= form.datetime_field :date %><br>
+    <% @event.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :location %><br>
+    <%= form.text_area :location %>
+    <% @event.errors.full_messages_for(:location).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit 'Update Event', class: 'btn btn-primary' %>
+  </div>
+<% end %>

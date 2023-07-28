@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :events do
    resources :attendances, only: [:create, :destroy ]
   end
+
+  # get 'events/:id/edit', to: 'events#edit', as: 'edit_event'
+  # patch 'events/:id', to: 'events#update'
+  # delete 'events/:id', to: 'events#destroy'
 end
