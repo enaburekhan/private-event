@@ -47,6 +47,22 @@ class EventsController < ApplicationController
 
     redirect_to events_path, notice: 'Event successfully deleted'
   end
+
+  def invite
+    @event = Event.find(params[:id])
+    @invited_users = @event.invited_users
+    @users_to_invite = User.where.not(id: @invited_users.pluck(:id) + [@event.creator_id])
+  end
+
+  def send_invites
+    @event = Event.find(params[:id])
+    invited_user_ids = params[:invited_user_ids]
+
+    # Add the selected users to the event's invited_users association
+    @event.invited_users << User.where(id: invited_user_ids)
+
+    redirect_to event_path(@event), notice: 'Invitations sent successfully.'
+  end
   
   private 
 

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # resources :users, only: [:show]
   resources :events do
    resources :attendances, only: [:create, :destroy ]
+   member do
+    get :invite
+    post :send_invites
+   end
   end
 
   # get 'events/:id/edit', to: 'events#edit', as: 'edit_event'
