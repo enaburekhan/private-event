@@ -1,7 +1,7 @@
 databases:
   - name: private-event
-    databaseName: private-event
-    user: private-event
+    databaseName: eric
+    user: eric
 
 services:
   - type: web
