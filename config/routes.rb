@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # get 'users/show'
+  devise_for :users
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'events#index'
+  get '/users/:id', to: 'users#show', as: 'users_show'
+
+  # resources :users, only: [:show]
+  resources :events do
+   resources :attendances, only: [:create, :destroy ]
+   member do
+    get :invite
+    post :send_invites
+   end
+  end
+
+  # get 'events/:id/edit', to: 'events#edit', as: 'edit_event'
+  # patch 'events/:id', to: 'events#update'
+  # delete 'events/:id', to: 'events#destroy'
 end

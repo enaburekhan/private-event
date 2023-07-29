@@ -1,0 +1,48 @@
+<h1>Events online</h1>
+
+<div class="card event-card">
+  <% @events.each do |event| %>
+    <div class="row">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to event.name, @event %></h5>
+          <p class="card-text"><%= link_to event.location, @root %></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"><%= link_to event.date, @root %></small>
+        </div>
+      
+    </div>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+  <h1>Upcoming Events</h1>
+  <div class='card'>
+    <% @events.upcoming.each do |event| %>
+      <div class='card-body'>
+        <h3><%= link_to event.name, event_path(event) %></h3>
+        <p><%= event.location %></p>
+      </div>
+      <div class='card-footer'> 
+        <small class='text-muted'>Date: <%= event.date %></small>
+      </div>
+    <% end %>
+  <div>
+
+  <h1>Past Events</h1>
+  <div class='card'>
+    <% @events.past.each do |event| %>
+      <div class='card-body'>
+        <h3><%= link_to event.name, event_path(event) %></h3>
+        <p><%= event.location %></p>
+        
+      </div>  
+      <div class='card-footer'>
+      <small class='text-muted'>Date: <%= event.date %></small>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
