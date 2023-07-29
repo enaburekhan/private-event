@@ -8,6 +8,7 @@ services:
   - type: web
     name: private_event
     env: ruby
+    plan: free
     buildCommand: './render-build.sh'
     startCommand: 'bundle exec rails s'
     envVars:
